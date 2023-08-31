@@ -19,6 +19,10 @@ function PokemonPage() {
     setSearchName(value)
   }
 
+  function onNewPokemonAdd(newPokemon){
+    setPokemons([...pokemons, newPokemon])
+  }
+
   const pokemonsToDisplay = pokemons.filter(pokemon => {
     return pokemon.name.toLowerCase().includes(searchName.toLowerCase())
   })
@@ -27,7 +31,10 @@ function PokemonPage() {
     <Container>
       <h1>Pokemon Searcher</h1>
       <br />
-      <PokemonForm />
+      <PokemonForm 
+        url={url} 
+        onNewPokemonAdd={onNewPokemonAdd}
+      />
       <br />
       <Search searchName={searchName} onUpdateSearchName={onUpdateSearchName} />
       <br />
